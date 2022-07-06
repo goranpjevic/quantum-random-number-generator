@@ -15,9 +15,9 @@ had_rand←{
   ⍝ all initial states
   q←1 0
   ⍝ apply hadamard gates
-  v←(H+.×⊢)¨n⍴⊂q
+  s←(H+.×⊢)¨n⍴⊂q
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
 }
 
 ⍝ equal distribution of all possible values using rotation gates
@@ -27,9 +27,9 @@ rot_rand←{
   ⍝ all initial states
   q←1 0
   ⍝ apply rotation gates
-  v←((rx○.5)+.×⊢)¨n⍴⊂q
+  s←((rx○.5)+.×⊢)¨n⍴⊂q
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
 }
 
 ⍝ set the probability of getting a result
@@ -47,13 +47,13 @@ fixed_probability←{
   ⍝ rx input values
   riv←n⍴2×¯2○ev
   ⍝ apply quantum gates
-  v←(q+.×⍨⊢)¨(rx¨riv)
+  s←(q+.×⍨⊢)¨(rx¨riv)
 
   ⍝ second rotations
-  v←+.×⌿2n⍴v,rx¨○~b
+  s←+.×⌿2n⍴s,rx¨○~b
 
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
 }
 
 print_usage←{
