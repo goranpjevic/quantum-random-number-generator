@@ -6,7 +6,7 @@ note:
 
 the first line of the output are all the generated values.  the following lines
 are a table where the first column contains all the unique values sorted in an
-ascending order by size and the second one the amount of times the value
+ascending order by size and the second one the amount of times the value was
 generated.
 
 usage:
