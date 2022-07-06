@@ -1,3 +1,23 @@
                         quantum-random-number-generator
 
 generate random numbers using simulated quantum circuits.
+
+note:
+
+the first line of the output are all the generated values.  the following lines
+are a table where the first column contains all the unique values and the
+second one the amount of times the value generated.
+
+usage:
+
+  equal distribution of all possible values using hadamard gates:
+
+    h [number_of_qubits] [number_of_iterations]
+
+  equal distribution of all possible values using rotation gates:
+
+    r [number_of_qubits] [number_of_iterations]
+
+  set the probability of getting a result:
+
+    f [number_of_qubits] [number_of_iterations] [expected_probability] [expected_result]
