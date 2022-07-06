@@ -4,7 +4,7 @@
 H←(2*¯.5)×2 2⍴ 1 1 1 ¯1
 
 ⍝ x rotation of an angle
-rx←{2 2⍴(2○⍵÷2)(-(0j1)×1○⍵)(-(0j1)×1○⍵)(2○⍵÷2)}
+rx←{2 2⍴(2○⍵÷2)(-(0j1)×1○⍵÷2)(-(0j1)×1○⍵÷2)(2○⍵÷2)}
 ⍝ measure qubits
 m←{1⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
 
@@ -40,14 +40,18 @@ fixed_probability←{
   q←1 0
   ⍝ expected bits
   b←r⊤⍨n⍴2
-  ⍝ least common bit value
-  l←(~+/>2÷⍨≢)b
+
+  ⍝ first rotations
   ⍝ expected qubit values
-  ev←(1÷2×+/l≠b)*⍨p
+  ev←(1÷2×n)*⍨p
   ⍝ rx input values
-  riv←((○~l)×~b)+b×2×¯2○ev
+  riv←n⍴2×¯2○ev
   ⍝ apply quantum gates
   v←(q+.×⍨⊢)¨(rx¨riv)
+
+  ⍝ second rotations
+  v←+.×⌿2n⍴v,rx¨○~b
+
   ⍝ measure
   ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
 }
