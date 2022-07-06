@@ -47,7 +47,7 @@ fixed_probability←{
   ⍝ rx input values
   riv←n⍴2×¯2○ev
   ⍝ apply quantum gates
-  s←(q+.×⍨⊢)¨(rx¨riv)
+  s←(q+.×⍨rx)¨riv
 
   ⍝ second rotations
   s←+.×⌿2n⍴s,rx¨○~b
