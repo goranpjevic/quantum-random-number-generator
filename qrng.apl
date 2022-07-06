@@ -17,7 +17,7 @@ had_rand←{
   ⍝ apply hadamard gates
   v←(H+.×⊢)¨n⍴⊂q
   ⍝ measure
-  ⎕←{⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
 }
 
 ⍝ equal distribution of all possible values using rotation gates
@@ -29,7 +29,7 @@ rot_rand←{
   ⍝ apply rotation gates
   v←((rx○.5)+.×⊢)¨n⍴⊂q
   ⍝ measure
-  ⎕←{⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
 }
 
 ⍝ set the probability of getting a result
@@ -50,7 +50,7 @@ fixed_probability←{
   v←(q+.×⍨⊢)¨(rx¨riv)
   ⍝ measure
   a←{2⊥m v}¨⍳i
-  ⎕←{⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
 }
 
 print_usage←{

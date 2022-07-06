@@ -5,8 +5,9 @@ generate random numbers using simulated quantum circuits.
 note:
 
 the first line of the output are all the generated values.  the following lines
-are a table where the first column contains all the unique values and the
-second one the amount of times the value generated.
+are a table where the first column contains all the unique values sorted in an
+ascending order by size and the second one the amount of times the value
+generated.
 
 usage:
 
