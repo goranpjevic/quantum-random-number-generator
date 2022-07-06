@@ -49,7 +49,6 @@ fixed_probability←{
   ⍝ apply quantum gates
   v←(q+.×⍨⊢)¨(rx¨riv)
   ⍝ measure
-  a←{2⊥m v}¨⍳i
   ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m v}¨⍳i
 }
 
