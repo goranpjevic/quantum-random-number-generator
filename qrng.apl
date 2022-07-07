@@ -58,6 +58,8 @@ fixed_probability←{
 
 print_usage←{
   ⎕←'usage:',⎕ucs 10
+  ⎕←'  qrng.apl [option] [args]',⎕ucs 10
+  ⎕←'options:',⎕ucs 10
   ⎕←'  equal distribution of all possible values using hadamard gates:',⎕ucs 10
   ⎕←'    h [number_of_qubits] [number_of_iterations]',⎕ucs 10
   ⎕←'  equal distribution of all possible values using rotation gates:',⎕ucs 10

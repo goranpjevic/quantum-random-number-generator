@@ -11,6 +11,10 @@ generated.
 
 usage:
 
+  qrng.apl [option] [args]
+
+options:
+
   equal distribution of all possible values using hadamard gates:
 
     h [number_of_qubits] [number_of_iterations]
