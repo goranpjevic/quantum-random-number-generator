@@ -1,5 +1,7 @@
 #!/usr/bin/env dyalogscript
 
+⍝ zero state
+z←1 0
 ⍝ hadamard gate
 H←(2*¯.5)×2 2⍴ 1 1 1 ¯1
 
@@ -12,10 +14,8 @@ m←{1⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
 apply_gate←{
   ⍝ number of qubits and iterations
   n i←⍎¨⍵
-  ⍝ all initial states
-  q←1 0
   ⍝ apply the gate
-  s←(⍺+.×⊢)¨n⍴⊂q
+  s←(⍺+.×⊢)¨n⍴⊂z
   ⍝ measure
   ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
 }
@@ -24,8 +24,6 @@ apply_gate←{
 fixed_probability←{
   ⍝ number of qubits, iterations, expected probability and result
   n i p r←⍎¨⍵
-  ⍝ all initial states
-  q←1 0
   ⍝ expected bits
   b←r⊤⍨n⍴2
 
@@ -35,7 +33,7 @@ fixed_probability←{
   ⍝ rx input values
   riv←n⍴2×¯2○ev
   ⍝ apply quantum gates
-  s←(q+.×⍨rx)¨riv
+  s←(z+.×⍨rx)¨riv
 
   ⍝ second rotations
   s←+.×⌿2n⍴s,rx¨○~b
