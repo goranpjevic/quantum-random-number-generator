@@ -14,7 +14,7 @@ m←{1⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
 apply_gate←{
   ⍝ number of qubits and iterations
   n i←⍎¨⍵
-  ⍝ apply the gate
+  ⍝ apply the quantum gate on each qubit
   s←(⍺+.×⊢)¨n⍴⊂z
   ⍝ measure
   ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
@@ -32,7 +32,7 @@ fixed_probability←{
   ev←(1÷2×n)*⍨p
   ⍝ rx input values
   riv←n⍴2×¯2○ev
-  ⍝ apply quantum gates
+  ⍝ apply the quantum gates
   s←(z+.×⍨rx)¨riv
 
   ⍝ second rotations
