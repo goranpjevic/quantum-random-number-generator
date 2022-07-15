@@ -8,26 +8,14 @@ rx←{2 2⍴(2○⍵÷2)(-0j1×1○⍵÷2)(-0j1×1○⍵÷2)(2○⍵÷2)}
 ⍝ measure qubits
 m←{1⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
 
-⍝ equal distribution of all possible values using hadamard gates
-had_rand←{
+⍝ apply a quantum gate on each qubit and measure them
+apply_gate←{
   ⍝ number of qubits and iterations
   n i←⍎¨⍵
   ⍝ all initial states
   q←1 0
-  ⍝ apply hadamard gates
-  s←(H+.×⊢)¨n⍴⊂q
-  ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
-}
-
-⍝ equal distribution of all possible values using rotation gates
-rot_rand←{
-  ⍝ number of qubits and iterations
-  n i←⍎¨⍵
-  ⍝ all initial states
-  q←1 0
-  ⍝ apply rotation gates
-  s←((rx○.5)+.×⊢)¨n⍴⊂q
+  ⍝ apply the gate
+  s←(⍺+.×⊢)¨n⍴⊂q
   ⍝ measure
   ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
 }
@@ -70,8 +58,8 @@ print_usage←{
 
 main←{
   1=≢⍵:print_usage⍬
-  'h'=2⊃⍵:had_rand 2↓⍵
-  'r'=2⊃⍵:rot_rand 2↓⍵
+  'h'=2⊃⍵:H apply_gate 2↓⍵
+  'r'=2⊃⍵:(rx○.5)apply_gate 2↓⍵
   'f'=2⊃⍵:fixed_probability 2↓⍵
 }
 
