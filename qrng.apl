@@ -7,8 +7,8 @@ H←(2*¯.5)×2 2⍴ 1 1 1 ¯1
 
 ⍝ x rotation of an angle
 rx←{2 2⍴(2○⍵÷2)(-0j1×1○⍵÷2)(-0j1×1○⍵÷2)(2○⍵÷2)}
-⍝ measure qubits
-m←{⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
+⍝ measure a qubit
+m←{⊃(?0)<+\|2*⍨⍵}
 
 ⍝ apply a quantum gate on each qubit and measure them
 apply_gate←{
@@ -17,7 +17,7 @@ apply_gate←{
   ⍝ apply the quantum gate on each qubit
   s←(⍺+.×⊢)¨n⍴⊂z
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m¨s}¨⍳i
 }
 
 ⍝ set the probability of getting a result
@@ -39,7 +39,7 @@ fixed_probability←{
   s←+.×⌿2n⍴s,rx¨○~b
 
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m s}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m¨s}¨⍳i
 }
 
 print_usage←{
