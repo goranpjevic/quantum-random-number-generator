@@ -3,7 +3,7 @@
 ⍝ zero state
 z←1 0
 ⍝ hadamard gate
-H←(2*¯.5)×2 2⍴ 1 1 1 ¯1
+H←(2*¯.5)×2 2⍴1 1 1 ¯1
 
 ⍝ x rotation of an angle
 rx←{2 2⍴(2○⍵÷2)(-0j1×1○⍵÷2)(-0j1×1○⍵÷2)(2○⍵÷2)}
