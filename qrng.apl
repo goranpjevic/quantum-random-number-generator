@@ -8,7 +8,7 @@ H←(2*¯.5)×2 2⍴ 1 1 1 ¯1
 ⍝ x rotation of an angle
 rx←{2 2⍴(2○⍵÷2)(-0j1×1○⍵÷2)(-0j1×1○⍵÷2)(2○⍵÷2)}
 ⍝ measure qubits
-m←{1⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
+m←{⊃¨{⍵>?0}¨+\¨|2*⍨¨⍵}
 
 ⍝ apply a quantum gate on each qubit and measure them
 apply_gate←{
