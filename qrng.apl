@@ -17,7 +17,7 @@ apply_gate←{
   ⍝ apply the quantum gate on each qubit
   s←(⍺+.×⊢)¨n⍴⊂z
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m¨s}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,≢⍵}⌸⎕←{2⊥m¨s}¨⍳i
 }
 
 ⍝ set the probability of getting a result
@@ -39,7 +39,7 @@ fixed_probability←{
   s←+.×⌿2n⍴s,rx¨○~b
 
   ⍝ measure
-  ⎕←(⊂∘⍋⌷⊢){⍺,(≢⍵)}⌸⎕←{2⊥m¨s}¨⍳i
+  ⎕←(⊂∘⍋⌷⊢){⍺,≢⍵}⌸⎕←{2⊥m¨s}¨⍳i
 }
 
 print_usage←{
